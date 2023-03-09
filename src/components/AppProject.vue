@@ -17,15 +17,15 @@ import AppCardProject from './AppCardProject.vue';
     <main>
         <section>
             <div class="container">
-                <div class="row">
+                <div class="row my-5">
                     <div class="col">
                         <div class="mycard text-center">
                             <h1>Lista dei Progetti</h1>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div v-for="(project, index) in projects" :key="index" class="col-4">
+                <div class="row gy-5">
+                    <div v-for="(project, index) in projects" :key="index" class="col-12 col-md-4 col-lg-3">
                         <AppCardProject :project="project" :urlProject="urlProject"/>
                     </div>
                 </div>
