@@ -1,42 +1,40 @@
 <script>
-    import { stringifyExpression } from '@vue/compiler-core';
-import AppCardProject from './AppCardProject.vue';
+    // store
+    import { store } from '../store.js'
+
+    // components
+    import AppCardProject from './AppCardProject.vue';
 
     export default {
         components: {
             AppCardProject,
         },
-        props: {
-            projects: Array,
-            urlProject: String,
-            lastPage: Number,
-        },
         emits: [
-            'increaseBy',
-            'decreaseBy',
-            'selectPage'
+            'increase-by',
+            'decrease-by',
+            'select-page'
         ],
         data() {
             return {
-                current_page: 1,
+                store,
             }
         },
         methods: {
             increaseByOne() {
-                if(this.current_page < this.lastPage) {
-                    this.current_page += 1;
-                    this.$emit('increaseBy', this.current_page)
+                if(store.current_page < store.last_page) {
+                    store.current_page += 1;
+                    this.$emit('increase-by')
                 }
             },
             decreaseByOne() {
-                if(this.current_page > 1) {
-                    this.current_page -= 1;
-                    this.$emit('increaseBy', this.current_page)
+                if(store.current_page > 1) {
+                    store.current_page -= 1;
+                    this.$emit('increase-by')
                 }
             },
             selectPage(value) {
-                this.current_page = value;
-                this.$emit('selectPage', this.current_page)
+                store.current_page = value;
+                this.$emit('select-page')
             }
         },
     }
@@ -54,21 +52,21 @@ import AppCardProject from './AppCardProject.vue';
                     </div>
                 </div>
                 <div class="row gy-5">
-                    <div v-for="(project, index) in projects" :key="index" class="col-12 col-md-4 col-lg-3">
-                        <AppCardProject :project="project" :urlProject="urlProject"/>
+                    <div v-for="(project, index) in store.projects" :key="index" class="col-12 col-md-4 col-lg-3">
+                        <AppCardProject :project="project" :urlProject="store.url_project"/>
                     </div>
                 </div>
                 <div class="row my-5">
                     <div class="col">
                         <div class="mycard">
                             <div class="d-flex justify-content-center">
-                                <button @click="increaseByOne()" class="btn btn-square btn-primary fs-6">&#8680;</button>
+                                <button @click="increaseByOne()" class="btn btn-square btn-primary fs-6" :class="store.current_page == store.last_page ? 'disabled' : ''">&#8680;</button>
                                 <ul class="list-unstyled d-flex mb-0">
-                                    <li v-for="(page, index) in lastPage" :key="index">
-                                        <button @click="selectPage((index + 1))" class="btn btn-square btn-light" :class="current_page == (index + 1) ? 'bg-dark-subtle' : ''">{{ page }}</button>
+                                    <li v-for="(value, index) in store.last_page" :key="index">
+                                        <button @click="selectPage((value))" class="btn btn-square btn-light" :class="store.current_page == value ? 'bg-dark-subtle' : ''">{{ value }}</button>
                                     </li>
                                 </ul>
-                                <button @click="decreaseByOne()" class="btn btn-square btn-primary fs-6">&#8678;</button>
+                                <button @click="decreaseByOne()" class="btn btn-square btn-primary fs-6" :class="store.current_page == 1 ? 'disabled' : ''">&#8678;</button>
                             </div>
                         </div>
                     </div>

@@ -1,10 +1,10 @@
 <script>
-export default {
-    props: {
-        project: Object,
-        urlProject: String
+    export default {
+        props: {
+            project: Object,
+            urlProject: String
+        }
     }
-}
 </script>
 
 <template>

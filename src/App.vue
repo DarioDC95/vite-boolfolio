@@ -1,20 +1,20 @@
 <script>
-  // libraries
+  // libraries and store
   import axios from 'axios'
+  import { store } from './store.js'
 
   // components
+  import AppLoader from './components/AppLoader.vue'
   import AppProject from './components/AppProject.vue'
 
   export default {
     components: {
-      AppProject
+      AppProject,
+      AppLoader,
     },
     data() {
       return {
-        url_project: 'http://127.0.0.1:8000',
-        projects: null,
-        current_page: 1,
-        last_page: null,
+        store,
       }
     },
     beforeMount() {
@@ -22,16 +22,15 @@
     },
     methods: {
       getProjects() {
-        axios.get(`${this.url_project}/api/projects?page=${this.current_page}`).then((response) => {
-          this.projects = response.data.result.data
-          this.last_page = response.data.result.last_page
-          console.log(this.projects);
-          console.log(this.last_page)
+        axios.get(`${store.url_project}/api/projects?page=${store.current_page}`).then((response) => {
+          store.projects = response.data.result.data;
+          store.loading = false;
+          store.last_page = response.data.result.last_page;
+          console.log(store.projects);
+          console.log(store.last_page);
         })
       },
-      changePage(value) {
-        this.current_page = value;
-
+      changePage() {
         this.getProjects();
       }
     }
@@ -39,7 +38,8 @@
 </script>
 
 <template>
-  <AppProject :projects="projects" :urlProject="url_project" :lastPage="last_page" @increaseBy="changePage" @decreaseBy="changePage" @selectPage="changePage"/>
+  <AppLoader v-if="store.loading" />
+  <AppProject v-else @increase-by="changePage" @decrease-by="changePage" @selectPage="changePage"/>
 </template>
 
 <style lang="scss">
