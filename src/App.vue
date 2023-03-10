@@ -4,13 +4,17 @@
   import { store } from './store.js'
 
   // components
+  import AppHeader from './components/AppHeader.vue'
+  import AppFooter from './components/AppFooter.vue'
   import AppLoader from './components/AppLoader.vue'
   import AppProject from './components/AppProject.vue'
 
   export default {
     components: {
-      AppProject,
+      AppHeader,
+      AppFooter,
       AppLoader,
+      AppProject,
     },
     data() {
       return {
@@ -38,8 +42,10 @@
 </script>
 
 <template>
+  <AppHeader />
   <AppLoader v-if="store.loading" />
   <AppProject v-else @increase-by="changePage" @decrease-by="changePage" @selectPage="changePage"/>
+  <AppFooter />
 </template>
 
 <style lang="scss">

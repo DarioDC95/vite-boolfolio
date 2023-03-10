@@ -9,7 +9,7 @@
 
 <template>
     <div class="card h-100">
-        <img :src="project.cover_path == null ? 'https://picsum.photos/id/1/200/300' : `${urlProject}/storage/${project.cover_path}`" :alt="project.title" class="img-top">
+        <img :src="project.cover_path == null ? 'https://picsum.photos/id/1/200/300' : `${urlProject}/storage/${project.cover_path}`" :alt="project.title" class="card-img-top">
         <div class="card-body d-flex flex-column">
             <div>
                 <h5>{{ project.title }}</h5>
