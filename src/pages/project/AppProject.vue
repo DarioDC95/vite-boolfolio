@@ -15,7 +15,7 @@
         emits: [
             'increase-by',
             'decrease-by',
-            'select-page'
+            'select-page',
         ],
         data() {
             return {
@@ -32,7 +32,7 @@
             decreaseByOne() {
                 if(store.current_page > 1) {
                     store.current_page -= 1;
-                    this.$emit('increase-by')
+                    this.$emit('decrease-by')
                 }
             },
             selectPage(value) {
@@ -83,8 +83,6 @@
 </template>
 
 <style scoped lang="scss">
-    @use '../../styles/partials/variables' as *;
-    
     .loader {
         height: calc(100vh - 140px);
         display: flex;

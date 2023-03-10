@@ -23,11 +23,16 @@
     methods: {
       getProjects() {
         axios.get(`${store.url_project}/api/projects?page=${store.current_page}`).then((response) => {
-          store.projects = response.data.result.data;
-          store.loading = false;
-          store.last_page = response.data.result.last_page;
-          console.log(store.projects);
-          console.log(store.last_page);
+          if(response.data.success) {
+            store.projects = response.data.result.data;
+            store.loading = false;
+            store.last_page = response.data.result.last_page;
+            console.log(response);
+            console.log(store.last_page);
+          }
+          else {
+            // MESSAGGIO D'ERRORE DA FAR COMPARIRE
+          }
         })
       },
       changePage() {

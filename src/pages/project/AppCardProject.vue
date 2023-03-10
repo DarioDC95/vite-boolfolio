@@ -26,10 +26,10 @@
                 </div>
                 <div>
                     <div>
-                        <p><strong>Contenuto:</strong> {{ (project.content == null) ? 'NON Disponibile' : (project.content).substring(0, 50) }}...</p>
+                        <p><strong>Contenuto:</strong> {{ (project.content == null) ? 'NON Disponibile' : `${(project.content).substring(0, 50)}${'...'}` }}</p>
                     </div>
                     <div>
-                        <button class="btn btn-secondary">Vai al Progetto</button>
+                        <router-link :to="{ name: 'single-project', params: { slug: project.slug } }" class="btn btn-secondary">Vai al Progetto</router-link>
                     </div>
                 </div>
             </div>
