@@ -6,13 +6,11 @@
   // components
   import AppHeader from './components/AppHeader.vue'
   import AppFooter from './components/AppFooter.vue'
-  import AppProject from './components/AppProject.vue'
 
   export default {
     components: {
       AppHeader,
       AppFooter,
-      AppProject,
     },
     data() {
       return {

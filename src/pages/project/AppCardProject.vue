@@ -1,5 +1,6 @@
 <script>
     export default {
+        name: AppCardProject,
         props: {
             project: Object,
             urlProject: String

@@ -1,5 +1,6 @@
 <script>
     export default {
+        name: AppHeader,
         data() {
             return {
                 data_navbar: [
@@ -9,7 +10,7 @@
                     },
                     {
                         label: 'Progetti',
-                        routeName: 'proj'
+                        routeName: 'projects'
                     }
                 ]
             }

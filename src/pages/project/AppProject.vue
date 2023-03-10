@@ -1,12 +1,13 @@
 <script>
     // store
-    import { store } from '../store.js'
+    import { store } from '../../store.js'
 
     // components
     import AppCardProject from './AppCardProject.vue';
-    import AppLoader from '../components/AppLoader.vue';
+    import AppLoader from '../../components/AppLoader.vue';
 
     export default {
+        name: AppProject,
         components: {
             AppCardProject,
             AppLoader,
