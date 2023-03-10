@@ -7,7 +7,7 @@
     import AppLoader from '../../components/AppLoader.vue';
 
     export default {
-        name: AppProject,
+        name: 'AppProject',
         components: {
             AppCardProject,
             AppLoader,
