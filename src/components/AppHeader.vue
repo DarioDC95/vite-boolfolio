@@ -31,7 +31,7 @@
                             <div class="d-flex">
                                 <ul class="navbar-nav">
                                     <li v-for="(value, index) in data_navbar" :key="index" class="nav-item">
-                                        <a class="nav-link" :href="value.routeName">{{ value.label }}</a>
+                                        <router-link class="nav-link" :to="{ name: value.routeName }">{{ value.label }}</router-link>
                                     </li>
                                 </ul>
                             </div>

@@ -83,7 +83,7 @@
 </template>
 
 <style scoped lang="scss">
-    @use '../styles/partials/variables' as *;
+    @use '../../styles/partials/variables' as *;
     
     .loader {
         height: calc(100vh - 140px);

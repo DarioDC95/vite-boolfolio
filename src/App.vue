@@ -39,8 +39,7 @@
 
 <template>
   <AppHeader />
-  <!-- <AppProject @increase-by="changePage" @decrease-by="changePage" @selectPage="changePage"/> -->
-  <router-view></router-view>
+  <router-view @increase-by="changePage" @decrease-by="changePage" @selectPage="changePage"></router-view>
   <AppFooter />
 </template>
 

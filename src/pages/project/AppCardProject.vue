@@ -18,7 +18,7 @@
             <div class="flex-grow-1 d-flex flex-column justify-content-between">
                 <div>
                     <p>
-                        <em><strong>Tipologia:</strong> {{ project.type.name == null ? 'NON Disponibile' : project.type.name }}</em>
+                        <em><strong>Tipologia:</strong> {{ project.type == null ? 'NON Disponibile' : project.type.name }}</em>
                     </p>
                     <p>
                         <em><strong>Tecnologie:</strong> <span class="text-primary">{{ (project.technologies == null) ? 'NON Disponibile' : ((project.technologies).map((technology) => technology.name)).join(', ') }}</span></em>
