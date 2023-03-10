@@ -4,10 +4,12 @@
 
     // components
     import AppCardProject from './AppCardProject.vue';
+    import AppLoader from '../components/AppLoader.vue';
 
     export default {
         components: {
             AppCardProject,
+            AppLoader,
         },
         emits: [
             'increase-by',
@@ -42,7 +44,10 @@
 
 <template>
     <main>
-        <section>
+        <section class="loader" v-if="store.loading">
+            <AppLoader />
+        </section>
+        <section v-else>
             <div class="container">
                 <div class="row my-5">
                     <div class="col">
@@ -79,4 +84,10 @@
 <style scoped lang="scss">
     @use '../styles/partials/variables' as *;
     
+    .loader {
+        height: calc(100vh - 140px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>

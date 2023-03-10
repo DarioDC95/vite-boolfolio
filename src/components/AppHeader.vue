@@ -43,5 +43,9 @@
 </template>
 
 <style scoped lang="scss">
-    
+    header {
+        height: 70px;
+        display: flex;
+        align-items: center;
+    }
 </style>
