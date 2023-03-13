@@ -18,9 +18,16 @@
         mounted() {
             store.loading = true;
             axios.get(`${store.url_project}/api/projects/${this.$route.params.slug}`).then((response) => {
-                store.loading = false;
-                this.project = response.data.result;
-                console.log(response);
+                if(response.data.success) {
+                    store.loading = false;
+                    this.project = response.data.result;
+                    console.log(response);
+                    this.$router.push('/proj/:slug');
+                }
+                else {
+                    store.loading = false;
+                    this.$router.push('/project_not_found');
+                }
             })
         },
     }
