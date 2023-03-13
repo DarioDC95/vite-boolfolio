@@ -15,9 +15,10 @@
     data() {
       return {
         store,
+        previouslyFailed: false,
       }
     },
-    beforeMount() {
+    mounted() {
       this.getProjects()
     },
     methods: {
@@ -27,10 +28,8 @@
             store.projects = response.data.result.data;
             store.loading = false;
             store.last_page = response.data.result.last_page;
-            this.$router.push('/');
           }
           else {
-            console.log(this.$router);
             this.$router.push('/page_not_found');
           }
         })
