@@ -26,7 +26,7 @@
                     <nav class="navbar navbar-expand-md">
                         <div class="container-fluid">
                             <div class="navbar-brand">
-                                <img src="../../public/img/logo.svg" alt="Logo Boolean">
+                                <img src="../../img/logo.svg" alt="Logo Boolean">
                             </div>
                             <div class="d-flex">
                                 <ul class="navbar-nav">

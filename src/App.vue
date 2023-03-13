@@ -27,11 +27,11 @@
             store.projects = response.data.result.data;
             store.loading = false;
             store.last_page = response.data.result.last_page;
-            console.log(response);
-            console.log(store.last_page);
+            this.$router.push('/');
           }
           else {
-            // MESSAGGIO D'ERRORE DA FAR COMPARIRE
+            console.log(this.$router);
+            this.$router.push('/page_not_found');
           }
         })
       },
@@ -43,9 +43,9 @@
 </script>
 
 <template>
-  <AppHeader />
+  <AppHeader v-if="store.loading == false"/>
   <router-view @increase-by="changePage" @decrease-by="changePage" @selectPage="changePage"></router-view>
-  <AppFooter />
+  <AppFooter v-if="store.loading == false"/>
 </template>
 
 <style lang="scss">

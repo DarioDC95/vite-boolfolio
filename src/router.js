@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from './pages/HomePage.vue';
 import AppProject from './pages/project/AppProject.vue';
 import AppSingleProject from './pages/project/AppSingleProject.vue';
+import AppFailed404 from './components/AppFailed404.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -22,6 +23,11 @@ const router = createRouter({
             path: '/proj/:slug',  /* l'aggiunta ':slug' indica che gli passiamo un parametro che necessiterà deverso ogni volta si presume */
             name: 'single-project',
             component: AppSingleProject
+        },
+        {
+            path: '/page_not_found',
+            name: 'failed',
+            component: AppFailed404
         }
     ]
 });
