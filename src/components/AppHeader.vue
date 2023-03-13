@@ -11,6 +11,10 @@
                     {
                         label: 'Progetti',
                         routeName: 'projects'
+                    },
+                    {
+                        label: 'Contattaci',
+                        routeName: 'contacts'
                     }
                 ]
             }

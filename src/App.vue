@@ -19,7 +19,7 @@
       }
     },
     mounted() {
-      this.getProjects()
+      this.getProjects();
     },
     methods: {
       getProjects() {

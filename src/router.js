@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 // IMPORTIAMO LE COMPONENTI DA RAPPRESENTARE CON IL ROUTER
 import HomePage from './pages/HomePage.vue';
+import Contacts from './pages/Contacts.vue';
 import AppProject from './pages/project/AppProject.vue';
 import AppSingleProject from './pages/project/AppSingleProject.vue';
 import AppFailed404 from './components/AppFailed404.vue';
@@ -34,6 +35,11 @@ const router = createRouter({
             path: '/project_not_found',
             name: 'not-found',
             component: AppProjectNotFound
+        },
+        {
+            path: '/contacts',
+            name: 'contacts',
+            component: Contacts
         }
     ]
 });
