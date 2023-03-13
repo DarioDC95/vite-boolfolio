@@ -1,15 +1,17 @@
 <script>
     import { store } from '../store.js';
+    import axios from 'axios';
  
     export default {
         data() {
             return {
                 store,
-                name: null,
-                surname: null,
-                email: null,
-                phone_number: null,
-                message: null,
+                name: '',
+                surname: '',
+                email: '',
+                phone_number: '',
+                message: '',
+                errors: null,
             }
         },
         methods: {
@@ -22,8 +24,19 @@
                     message: this.message,
                 }
 
-                axios.post(`${store.baseUrl}/api/contacts`, data).then((response) => {
-
+                axios.post(`${store.url_project}/api/contacts`, data).then((response) => {
+                    if(!response.data.success) {
+                        this.errors = response.data.errors;
+                        console.log(this.errors);
+                    }
+                    else {
+                        this.name = '';
+                        this.surname = '';
+                        this.emai = '';
+                        this.phone_number = '';
+                        this.message = '';
+                        this.errors = null;
+                    }
                 });
             }
         },
@@ -68,30 +81,50 @@
                 <div class="row">
                     <div class="col-12">
                         <h2 class="text-center mb-5 text-white">Scrivici</h2>
-                        <form @submit.prevent="">
+                        <form @submit.prevent="sendForm">
                             <div class="row">
                                 <div class="col-12 col-md-6 mb-3">
                                     <label class="control-label" for="name">Nome</label>
                                     <input type="text" class="form-control" name="name" id="name" placeholder="Inserisci il tuo nome" v-model="name">
+                                    <div class="errors" v-if="errors != null">
+                                        <div v-for="(value, index) in errors.name" :key="index" class="">{{ value }}</div>
+                                    </div>
                                 </div>
                                 <div class="col-12 col-md-6 mb-3">
                                     <label class="control-label" for="surname">Cognome</label>
                                     <input type="text" class="form-control" name="surname" id="surname" placeholder="Inserisci il tuo cognome" v-model="surname">
+                                    <div class="errors" v-if="errors != null">
+                                        <div v-for="(value, index) in errors.surname" :key="index" class="">{{ value }}</div>
+                                    </div>
                                 </div>
                                 <div class="col-12 col-md-6 mb-3">
                                     <label class="control-label" for="email">Email</label>
                                     <input type="mail" class="form-control" name="email" id="email" placeholder="Inserisci la tua email" v-model="email">
+                                    <div class="errors" v-if="errors != null">
+                                        <div v-for="(value, index) in errors.email" :key="index" class="">{{ value }}</div>
+                                    </div>
                                 </div>
                                 <div class="col-12 col-md-6 mb-3">
                                     <label class="control-label" for="phone_number">Nome</label>
                                     <input type="phone" class="form-control" name="phone_number" id="phone_number" placeholder="Inserisci il tuo numero di telefono" v-model="phone_number">
+                                    <div class="errors" v-if="errors != null">
+                                        <div v-for="(value, index) in errors.phone_number" :key="index" class="">{{ value }}</div>
+                                    </div>
                                 </div>
                                 <div class="col-12 mb-5">
                                     <label class="control-label" for="phone_number">Messaggio</label>
                                     <textarea class="form-control" name="message" id="message" rows="5" v-model="message"></textarea>
+                                    <div class="errors" v-if="errors != null">
+                                        <div v-for="(value, index) in errors.message" :key="index" class="">{{ value }}</div>
+                                    </div>
                                 </div>
                                 <div class="col-12 my-2 text-center">
                                     <button type="submit" class="btn btn-success">Invia i dati</button>
+                                </div>
+                                <div v-if="errors != null" class="col-12">
+                                    <div class="errors">
+                                        <div v-for="(value, index) in errors" :key="index" class="">{{ value }}</div>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -103,5 +136,7 @@
 </template>
 
 <style scoped lang="scss">
-    
+    .errors {
+        text-shadow: 0px 0px 5px #ff0000;
+    }
 </style>
