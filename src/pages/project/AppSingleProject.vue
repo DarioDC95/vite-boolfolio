@@ -26,7 +26,7 @@
                 }
                 else {
                     store.loading = false;
-                    this.$router.push('/project_not_found');
+                    this.$router.push({ name: 'not-found' });
                 }
             })
         },

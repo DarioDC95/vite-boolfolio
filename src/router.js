@@ -32,15 +32,15 @@ const router = createRouter({
             component: AppFailed404
         },
         {
-            path: '/project_not_found',
-            name: 'not-found',
-            component: AppProjectNotFound
-        },
-        {
             path: '/contacts',
             name: 'contacts',
             component: Contacts
-        }
+        },
+        {
+            path: '/*',  /* diventa con l'* diventa un selettore universale di tutte le pagine */
+            name: 'not-found',
+            component: AppProjectNotFound
+        },
     ]
 });
 
