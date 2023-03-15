@@ -23,7 +23,7 @@
 
 <style scoped lang="scss">
     .failed {
-        height: 100vh;
+        height: calc(100vh - 140px);
         display: flex;
         justify-content: center;
         align-items: center;

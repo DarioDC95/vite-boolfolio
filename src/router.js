@@ -27,17 +27,17 @@ const router = createRouter({
             component: AppSingleProject
         },
         {
-            path: '/page_not_found',
-            name: 'failed',
-            component: AppFailed404
-        },
-        {
             path: '/contacts',
             name: 'contacts',
             component: Contacts
         },
         {
-            path: '/*',  /* diventa con l'* diventa un selettore universale di tutte le pagine */
+            path: '/:path*',  /* il ":whatever*" diventa un selettore universale di tutte le pagine che non dovessero corrispondere con le rotte qui presenti*/
+            name: 'failed',
+            component: AppFailed404
+        },
+        {
+            path: '/not_found',
             name: 'not-found',
             component: AppProjectNotFound
         },
